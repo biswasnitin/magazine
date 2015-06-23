@@ -1,0 +1,27 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<%=  %>
+
+<div class ="isa_info ">
+
+  <b> <strong>Title:</strong></b>
+  <%= @article.title %>
+
+  <strong>Author:</strong>
+  <%= @article.author %>
+  <br></br>
+  <%=@article.body%>
+
+
+</div>
+<%#= render @article.comments %>
+<%= nested_messages @article.comments.arrange(:order => :created_at) %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+  <%= link_to 'Back', articles_path %> |
+<%= link_to 'Edit', edit_article_path(@article) %>

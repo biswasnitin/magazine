@@ -1,0 +1,39 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+  <%= javascript_include_tag "/assets/private/form_validation" %>
+  
+<h1>Sign Up</h1>
+
+<%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <h2>Form is invalid</h2>
+    <% for message in @user.errors.full_messages %>
+      <li><%=message%></li>
+    <%end%>
+  <%end%>
+      <p>
+    <%= f.label :email %><br/>
+   
+  <%= f.text_field :email %>&nbsp; &nbsp;&nbsp;<span id ="email_messsage"> *Required  </span>
+      </p>
+
+            <p>
+    <%= f.label :name %><br/>
+
+  <%= f.text_field :name %>&nbsp; &nbsp;&nbsp;<span id ="name"> *Required  </span>
+      </p>
+  
+  <p>
+    <%= f.label :password  %><br/>
+    <%= f.password_field :password %>
+
+  </p>
+  <p>
+    <%= f.label :password_confirmation  %><br/>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <%= f.submit %>
+<% end %>
