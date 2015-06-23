@@ -43,7 +43,10 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 end
-gem 'pg'
+#group :production do
+#  gem 'pg'
+#  gem 'rails_12factor', '0.0.2'
+#end
 #group :production do
 #  gem 'pg'
 #end
