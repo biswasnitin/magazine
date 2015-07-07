@@ -10,4 +10,11 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-Rails.application.config.assets.precompile += %w( jquery.js )
+#Rails.application.config.assets.precompile += %w( jquery_ujs.js )
+Rails.application.config.assets.precompile += %w( dynamic_div.js  )
+Rails.application.config.assets.precompile += %w( main.css )
+Rails.application.config.assets.precompile += %w( print.css )
+Rails.application.config.assets.precompile += %w( aural.css )
+Rails.application.config.assets.precompile += %w( nestedmessage.css )
+Rails.application.config.assets.precompile += %w( tab.js )
+Rails.application.config.assets.precompile += %w( form_validation.js )

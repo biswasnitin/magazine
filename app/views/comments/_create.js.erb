@@ -1,0 +1,19 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<% if type == 'child' %>
+
+$('#response').slideDown(350);
+$('div#response').closest('div.nested_messages').replaceWith("<div class ='nested_messages'><%= j (render @comment) %></div>");
+
+<%else%>
+
+$('div.main').append("<div><%= j (render @comment) %></div>");
+
+<%end%>
+
+$('span.comments').text("Comments(<%= total_comments %>)")
+
+$('#comment_body').val("")

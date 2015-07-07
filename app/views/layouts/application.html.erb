@@ -1,25 +1,180 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Magazine</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "jquery","application" %>
-  
-  <%#= csrf_meta_tags %>
 
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+<head>
+
+  <title>Magazine</title>
+ 
+  <%= javascript_include_tag "application" %>
+
+   <%= javascript_include_tag "tab" %>
+  <%= javascript_include_tag "dynamic_div" %>
+  <%= stylesheet_link_tag    "nestedmessage" %>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="content-language" content="cs" />
+    <meta name="robots" content="all,follow" />
+
+    <meta name="author" content="All: ... [Nazev webu - www.url.cz]; e-mail: info@url.cz" />
+    <meta name="copyright" content="Design/Code: Vit Dlouhy [Nuvio - www.nuvio.cz]; e-mail: vit.dlouhy@nuvio.cz" />
+
+    <title>Rails Magic</title>
+    <meta name="description" content="..." />
+    <meta name="keywords" content="..." />
+
+    <link rel="index" href="./" title="Home" />
+    <%#*<link rel="stylesheet" media="screen,projection" type="text/css" href="assets/main.css" />%>
+    <%#*<link rel="stylesheet" media="print" type="text/css" href="assets/print.css" />%>
+    <%#*<link rel="stylesheet" media="aural" type="text/css" href="assets/aural.css" />%>
+    <%= stylesheet_link_tag    "main", :media =>"screen,projection" %>
+    <%= stylesheet_link_tag    "print", :media => "print"%>
+    <%= stylesheet_link_tag    "aural" ,:media=> "aural" %>
+     <%#= stylesheet_link_tag    "application", :media => "all" %>
+    <%#= stylesheet_link_tag "application" %>
+    <%= csrf_meta_tags %>
 </head>
-<body>
-  <div id ="user_link">
-    <%if current_user %>
-Logged in as <%= current_user.name %>
-<%=link_to "Log out",logout_path %>
+
+<body id="www-url-cz">
+
+<!-- Main -->
+<div id="main" class="box">
+
+    <!-- Header -->
+    <div id="header">
+
+        <!-- Logotyp -->
+        <h1 id="logo">Rails<strong>MGK</strong><span></span></h1>
+        <hr class="noscreen" />
+
+        <!-- Quick links -->
+        <div class="noscreen noprint">
+            <p><em>Quick links: <a href="#content">content</a>, <a href="#tabs">navigation</a>, <a href="#search">search</a>.</em></p>
+            <hr />
+        </div>
+
+        <!-- Search -->
+        <div id="search" class="noprint">
+            <form action="" method="get">
+                <fieldset><legend>Search</legend>
+                    <label><span class="noscreen">Find:</span>
+                    <span id="search-input-out"><input type="text" name="" id="search-input" size="30" /></span></label>
+                    <input type="image" src="<%= asset_path('search_submit.gif') %>" id="search-submit" value="OK" />
+                </fieldset>
+            </form>
+        </div> <!-- /search -->
+
+    </div> <!-- /header -->
+
+     <!-- Main menu (tabs) -->
+     <div id="tabs" class="noprint">
+
+            <h3 class="noscreen">Navigation</h3>
+            <ul class="box">
+                <%= render "comman" %>
+            </ul>
+
+        <hr class="noscreen" />
+     </div> <!-- /tabs -->
+
+    <!-- Page (2 columns) -->
+    <div id="page" class="box">
+    <div id="page-in" class="box">
+
+        <div id="strip" class="box noprint">
+
+            <!-- RSS feeds -->
+            
+            <hr class="noscreen" />
+
+            <!-- Breadcrumbs -->
+            <p id="breadcrumbs"><%if current_user %>
+              Logged in as <strong><%= current_user.name %></strong>
+              <strong><%= link_to 'create article', new_article_path, remote: true %></strong>
+              <strong> <%=link_to "Log out",logout_path %></strong>
+              
 <%else%>
 <%=link_to "Sign up",sign_up_path%>
 <%=link_to "Log in",login_path%>
-<%end%>
-  </div>
+<%end%></p>
+            <hr class="noscreen" />
 
-<%= yield %>
+        </div> <!-- /strip -->
+
+        <!-- Content -->
+        <div id="content">
+
+            
+          <!-- Article -->
+          
+            <%= yield %>
+        </div> <!-- /content -->
+
+        <!-- Right column -->
+        <div id="col" class="noprint">
+            <div id="col-in">
+
+                <!-- About Me -->
+                <h3><span><a href="#">About Me</a></span></h3>
+
+                <div id="about-me">
+                    <p><img src="<%= asset_path('knight.jpg') %>" id="me" alt="Yeah, it´s me!" />
+                    <strong>Dark Knight</strong><br />
+                    Dallas, TX<br />
+                    <a href="https://www.facebook.com/nitin.biswas.372/about" target="_blank">profile on facebook</a></p>
+                </div> <!-- /about-me -->
+
+                <hr class="noscreen" />
+
+                <!-- Category -->
+                <h3 ><span>Category</span></h3>
+
+                <ul id="category">
+                    <li id="category-active"><a href="#">Selected category</a></li> <!-- Active -->
+                    <li><a href="#">Not Implemented</a></li>
+                    <li><a href="#">Not Implemented</a></li>
+                   
+                </ul>
+
+                <hr class="noscreen" />
+
+                <!-- Archive -->
+                <h3><span>Archive</span></h3>
+
+                <ul id="archive">
+                   
+                    <li id="archive-active"><a href="#">2015</a></li> <!-- Active -->
+                    
+                </ul>
+
+                <hr class="noscreen" />
+
+                <!-- Links -->
+                <h3><span>Links</span></h3>
+
+                <ul id="links">
+                    <li><a href="#">Not Implemented</a></li>
+                    
+                </ul>
+
+                <hr class="noscreen" />
+
+            </div> <!-- /col-in -->
+        </div> <!-- /col -->
+
+    </div> <!-- /page-in -->
+    </div> <!-- /page -->
+
+    <!-- Footer -->
+    <div id="footer">
+        <div id="top" class="noprint"><p><span class="noscreen">Back on top</span> <a href="#header" title="Back on top ^">^<span></span></a></p></div>
+        <hr class="noscreen" />
+
+        <p id="createdby">created by <a href="http://www.nuvio.cz">Nitin Biswas</a> <!-- DON´T REMOVE, PLEASE! --></p>
+        <p id="copyright">&copy; 2015 <a href="mailto:my@mail.com">Nitin Biswas</a></p>
+    </div> <!-- /footer -->
+
+</div> <!-- /main -->
 
 </body>
 </html>

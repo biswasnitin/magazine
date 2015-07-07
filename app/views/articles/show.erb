@@ -3,25 +3,25 @@
 # and open the template in the editor.
 %>
 
-<%=  %>
-
-<div class ="isa_info ">
-
-  <b> <strong>Title:</strong></b>
-  <%= @article.title %>
-
-  <strong>Author:</strong>
-  <%= @article.author %>
-  <br></br>
-  <%=@article.body%>
+<%#= javascript_include_tag "dynamic_div" %>
+ <%= javascript_include_tag "tab" %>
 
 
-</div>
+
+  <div id="content">
+
+<%= render @article %>
+
+
+<div class ="main">
 <%#= render @article.comments %>
 <%= nested_messages @article.comments.arrange(:order => :created_at) %>
-
-<h2>Add a comment:</h2>
+</div>
 <%= render 'comments/form' %>
-
-  <%= link_to 'Back', articles_path %> |
+    <%= link_to 'Back', articles_path %> |
 <%= link_to 'Edit', edit_article_path(@article) %>
+</div>
+
+
+
+  

@@ -26,9 +26,10 @@ Rails.application.routes.draw do
   #     end
   #   end
   match '/sign_up' , :to => 'users#new',via: [:get, :post]
-  match "/login", :to => "sessions#new" , :as => "login",via: [:get, :post]
+  match '/users/check_availability' , :to => 'users#check_availability',via: [:get, :post]
+  match "/login", :to => "sessions#new" ,via: [:get, :post]
   match "/logout" ,:to => "sessions#destroy", :as => "logout", via: [:get, :post]
-  root :to => "users#new"
+  root :to => "sessions#new"
   resources :users
   resources :sessions
   resources :comments

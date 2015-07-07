@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
     title = params[:article][:title]
     text =  params[:article][:text]
     @article = Article.new(article_params)
+    @article.created_by = current_user.id
     if @article.save
       redirect_to @article
     else
@@ -34,10 +35,19 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+     respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def index
+    if params[:my_article]
+     @articles = Article.where(:created_by => current_user.id).order('created_at DESC')
+#    @articles =  @articles.order('created_at DESC') if @articles
+    else
     @articles = Article.all.order('created_at DESC')
+    end
     respond_to do |format|
       format.html
       format.js
@@ -53,7 +63,7 @@ class ArticlesController < ApplicationController
 
 private
   def article_params
-    params.require(:article).permit(:body, :title)
+    params.require(:article).permit(:body, :title,:author)
   end
 
 end

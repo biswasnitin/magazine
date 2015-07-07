@@ -1,0 +1,17 @@
+
+
+  <div id="content">
+
+<%= render @article %>
+
+
+<div class ="main">
+<%= nested_messages @article.comments.arrange(:order => :created_at) %>
+</div>
+<%= render 'comments/form' %>
+     
+</div>
+
+
+
+ 

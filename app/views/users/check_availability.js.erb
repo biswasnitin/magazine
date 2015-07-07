@@ -1,0 +1,7 @@
+
+<%  if @status == 'Available'%>
+<%  color = 'green'%>
+<% else %>
+<% color = 'red' %>
+<%end%>
+$('#user_email_message').replaceWith("<span id ='user_email_message' class ='message'><font color ='<%=color%>'><strong> <%=@status %></font> </strong></span>")

@@ -3,16 +3,17 @@
 # and open the template in the editor.
 %>
 
-<%= form_for([@article, @article.comments.build]) do |f| %>
+<%= form_for([@article, @article.comments.build], remote: true)  do |f| %>
   <p>
-    <%#= f.label :commenter %><br>
+    <%#= f.label :commenter %>
     <%#= f.text_field :commenter %>
   </p>
-  <p>
-    <%= f.label :comment %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+ 
+  <strong> <%= f.label "Write Comment" %></strong><br>
+    <%= f.text_area :body ,:cols => "30", :rows => "3" %>
+    <div style="display:inline-block;">
+    <%= f.submit "Post" %>
+ </div>
+
+ 
 <% end %>

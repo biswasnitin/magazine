@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(params[:email],params[:password])
     if user
-      puts "inide theiff"
       cookies[:auth_token] = user.auth_token
       redirect_to articles_path,:notice => "Logged in!"
     else
@@ -14,7 +13,7 @@ class SessionsController < ApplicationController
 
 
 
-      flash.now.alert = "Invalid email or password"
+      flash[:error] = "Invalid email or password"
       render 'new'
     end
 

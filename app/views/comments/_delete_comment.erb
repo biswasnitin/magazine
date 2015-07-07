@@ -1,0 +1,13 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+<%if result == 'success'%>
+<%puts "inside the success"%>
+$('div#delete_response').closest('div.dialogbox').remove();
+
+<%else%>
+$('div#delete_response').remove();
+<%end%>
+
+$('span.comments').text("Comments(<%= @article.comments.count %>)")

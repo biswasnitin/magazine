@@ -1,9 +1,11 @@
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="3"></th>
-  </tr> 
-  <%= render @articles %>
-  </table>
-<%= link_to 'New article', new_article_path %>
+ <%= javascript_include_tag "tab" %>
+
+<div id="content">
+
+<%= render @articles  if @articles%>
+
+</div>
+
+
+
+

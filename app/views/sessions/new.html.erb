@@ -3,6 +3,11 @@
 
 
 <%=form_tag sessions_path do %>
+
+<%if flash[:error]%>
+<strong><p><font color ="red"><%= flash[:error] %></font></p></strong>
+
+<% end %>
   <p>
     <%= label_tag :email %><br/>
     <%= text_field_tag :email,params[:email] %>
